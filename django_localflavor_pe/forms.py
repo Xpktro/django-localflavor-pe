@@ -19,6 +19,7 @@ class PERegionSelect(Select):
     def __init__(self, attrs=None):
         super(PERegionSelect, self).__init__(attrs, choices=REGION_CHOICES)
 
+
 class PEDNIField(CharField):
     """
     A field that validates `Documento Nacional de IdentidadŽ (DNI) numbers.
@@ -30,7 +31,7 @@ class PEDNIField(CharField):
 
     def __init__(self, max_length=8, min_length=8, *args, **kwargs):
         super(PEDNIField, self).__init__(max_length, min_length, *args,
-                **kwargs)
+                                         **kwargs)
 
     def clean(self, value):
         """
@@ -46,6 +47,7 @@ class PEDNIField(CharField):
 
         return value
 
+
 class PERUCField(RegexField):
     """
     This field validates a RUC (Registro Unico de Contribuyentes). A RUC is of
@@ -58,7 +60,7 @@ class PERUCField(RegexField):
 
     def __init__(self, max_length=11, min_length=11, *args, **kwargs):
         super(PERUCField, self).__init__(max_length, min_length, *args,
-            **kwargs)
+                                         **kwargs)
 
     def clean(self, value):
         """
@@ -72,4 +74,3 @@ class PERUCField(RegexField):
         if len(value) != 11:
             raise ValidationError(self.error_messages['max_digits'])
         return value
-
